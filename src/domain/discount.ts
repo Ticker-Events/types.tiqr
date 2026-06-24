@@ -1,3 +1,6 @@
+/**
+ * Discount applied to a specific ticket add-on within a coupon.
+ */
 export type TAddonDiscount = {
   id: number;
   addon_id: number;
@@ -6,6 +9,9 @@ export type TAddonDiscount = {
   amount_after_discount: number;
 };
 
+/**
+ * Discount coupon available at checkout for a ticket.
+ */
 export type TDiscountCoupon = {
   code: string;
   type: string;
@@ -14,11 +20,15 @@ export type TDiscountCoupon = {
   addon_discounts?: TAddonDiscount[];
 };
 
+/** Ticket type a discount coupon can be applied to. */
 export type TApplicableTicket = {
   id: number;
   type: string;
 };
 
+/**
+ * Discount coupon as listed in the organiser admin panel.
+ */
 export type TDiscountCouponItem = {
   id: number;
   code: string;

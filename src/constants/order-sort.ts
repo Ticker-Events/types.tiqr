@@ -1,3 +1,6 @@
+/**
+ * Sort options for order list views in the store admin panel.
+ */
 export const ORDER_SORT_OPTIONS = {
   oldest_first: {
     id: "oldest_first",
@@ -11,4 +14,5 @@ export const ORDER_SORT_OPTIONS = {
   },
 } as const;
 
+/** Key identifying an entry in {@link ORDER_SORT_OPTIONS}. */
 export type TSortOptionsKey = keyof typeof ORDER_SORT_OPTIONS;

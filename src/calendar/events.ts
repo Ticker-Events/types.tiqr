@@ -1,3 +1,6 @@
+/**
+ * Appointment or order entry rendered on the store calendar views.
+ */
 export type TCalendarEvent = {
   order_id: number;
   name: string;
@@ -11,28 +14,33 @@ export type TCalendarEvent = {
   status: string;
 };
 
-/** @deprecated Use TCalendarEvent */
+/** @deprecated Use {@link TCalendarEvent} */
 export type CalendarEvent = TCalendarEvent;
 
+/** Props for the weekly calendar view component. */
 export type TCalendarWeeklyViewProps = {
   startDate: Date;
   scheduleData?: unknown[];
 };
 
+/** Props for the monthly calendar view component. */
 export type TCalendarMonthlyViewProps = {
   scheduleData?: unknown[];
 };
 
+/** Props for the monthly calendar sub-component with a required start date. */
 export type TCalendarMonthlyViewComponentProps = {
   scheduleData?: unknown[];
   startDate: Date;
 };
 
+/** Props for a single event chip in the calendar. */
 export type TCalendarEventItemProps = {
   event: TCalendarEvent;
   onClick: (orderId: number) => void;
 };
 
+/** Props for a day cell in the monthly calendar grid. */
 export type TCalendarDayProps = {
   date: Date;
   events: TCalendarEvent[];
@@ -41,11 +49,13 @@ export type TCalendarDayProps = {
   onEventClick: (orderId: number) => void;
 };
 
+/** Absolute positioning styles for calendar event popovers. */
 export type TPopoverStyles = {
   top: string;
   left: string;
 };
 
+/** Props for a positioned event block in the weekly time-grid. */
 export type TCalendarEventProps = {
   event: TCalendarEvent;
   gridRow: number;
@@ -55,6 +65,7 @@ export type TCalendarEventProps = {
   onClick: (orderId: number) => void;
 };
 
+/** Props for the list of events rendered inside a time column. */
 export type TCalendarEventsListProps = {
   events: TCalendarEvent[];
   getGridRowFromTime: (dateTimeStr: string) => number;
@@ -63,29 +74,35 @@ export type TCalendarEventsListProps = {
   onEventClick: (orderId: number) => void;
 };
 
+/** Props for the calendar week/date navigation control. */
 export type TCalendarDateSelectorProps = {
   startDate: Date;
   onDateChange: (date: Date) => void;
 };
 
+/** Props for the calendar loading shimmer skeleton. */
 export type TCalendarShimmerProps = {
   rows?: number;
 };
 
+/** Props for the weekly calendar shimmer skeleton. */
 export type TWeeklyCalendarShimmerProps = {
   className?: string;
 };
 
+/** Props for the mobile calendar layout. */
 export type TMobileViewProps = {
   scheduleData?: unknown[];
   startDate: Date;
 };
 
+/** Props for the desktop calendar layout. */
 export type TDesktopViewProps = {
   scheduleData?: unknown[];
   startDate: Date;
 };
 
+/** Props for a single day cell in the mobile calendar. */
 export type TMobileDayCellProps = {
   date: Date;
   events: TCalendarEvent[];

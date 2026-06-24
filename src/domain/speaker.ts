@@ -1,11 +1,15 @@
 import type { TImageMedia } from "../common/media.js";
 
+/** Speaker profile displayed on an event landing page. */
 export type TSpeakerResponse = {
   name: string;
   description: string;
   image?: TImageMedia;
 };
 
+/**
+ * Props for the speaker create/edit modal in the organiser dashboard.
+ */
 export type TSpeakerRequest = {
   eventId: string;
   speaker?: {

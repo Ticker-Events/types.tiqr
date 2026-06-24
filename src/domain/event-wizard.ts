@@ -1,5 +1,6 @@
 import type { TPlace } from "./place.js";
 
+/** Step 1 payload for the event creation wizard (basic details). */
 export type TWBasicRequest = {
   id?: number;
   name: string;
@@ -12,6 +13,7 @@ export type TWBasicRequest = {
   create_default_form?: boolean;
 };
 
+/** Step 2 payload for the event creation wizard (description and tags). */
 export type TWDescriptionRequest = {
   id?: number;
   genre: string;
@@ -19,17 +21,20 @@ export type TWDescriptionRequest = {
   description: string;
 };
 
+/** Step 3 payload for the event creation wizard (venue address). */
 export type TWLocationRequest = {
   id?: number;
   address: TPlace;
 };
 
+/** Step 4 payload for the event creation wizard (cover and logo media IDs). */
 export type TWPhotosRequest = {
   id?: number;
   cover?: number | null;
   logo?: number | null;
 };
 
+/** Step 5 payload for the event creation wizard (brochure media IDs). */
 export type TWBrochureRequest = {
   id?: number;
   brochure1?: number | null;

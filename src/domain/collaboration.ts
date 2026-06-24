@@ -1,7 +1,9 @@
-import type { TImageMedia } from "../common/media.js";
 import type { TUser } from "./user.js";
 import type { TTickerEvent } from "./event.js";
 
+/**
+ * Collaboration invite or membership linking a user to an event.
+ */
 export type TCollaboration = {
   id: number;
   can_edit: boolean;
@@ -12,6 +14,9 @@ export type TCollaboration = {
   type: string;
 };
 
+/**
+ * Collaboration record with the full event and requester expanded.
+ */
 export type TCollaborationItem = {
   id: number;
   can_edit: boolean;

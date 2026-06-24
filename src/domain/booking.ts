@@ -1,21 +1,27 @@
-import type { TImageMedia, TPdfFile } from "../common/media.js";
+import type { TPdfFile } from "../common/media.js";
 import type { TBasicTicket, TTicketAddon, TTicketResponse } from "./ticket.js";
 import type { TTickerEvent } from "./event.js";
 import type { TTickerForm } from "./event-form.js";
 import type { TUser } from "./user.js";
 
+/** How a booking was created: paid online, recorded offline, or complimentary. */
 export type TBookingType = "offline" | "online" | "complimentary";
 
+/** Add-on selection included in a booking request. */
 export type TBookingAddon = {
   addon: number;
   quantity: number;
 };
 
+/** Form answers submitted alongside a booking. */
 export type TBookingFormData = {
   answers: unknown;
   form: TTickerForm;
 };
 
+/**
+ * Core booking fields used in check-in flows and booking creation.
+ */
 export type TBookingData = {
   id?: number;
   ticket: number;
@@ -33,6 +39,7 @@ export type TBookingData = {
   booking_id: string;
 };
 
+/** Itemised price breakdown for a ticket booking payment. */
 export type TPaymentBreakdown = {
   ticket_unit_price: number;
   addon_amount: number;
@@ -45,6 +52,7 @@ export type TPaymentBreakdown = {
   discount: number;
 };
 
+/** Payment record snapshot stored on a completed booking. */
 export type TBookingPaymentSnapshot = {
   id: number;
   event: number;
@@ -56,11 +64,15 @@ export type TBookingPaymentSnapshot = {
   callback_url: string;
 };
 
+/** Add-on line item frozen on a completed booking. */
 export type TAddonBookingSnapshot = {
   addon: TTicketAddon;
   quantity: number;
 };
 
+/**
+ * Full booking record returned to buyers and organisers.
+ */
 export type TUserBooking = {
   id?: number;
   uid: string;
@@ -96,6 +108,7 @@ export type TUserBooking = {
   };
 };
 
+/** Response shape returned immediately after creating a booking. */
 export type TBookingResponse = {
   id?: number;
   ticket: number;
@@ -107,6 +120,7 @@ export type TBookingResponse = {
   booking_id: string;
 };
 
+/** Labelled row in a ticket price breakup display. */
 export type TBreakupItem = {
   label: string;
   value: number;
@@ -114,6 +128,7 @@ export type TBreakupItem = {
   valueClass?: string;
 };
 
+/** Full ticket price breakup shown during checkout and in organiser reports. */
 export type TBreakup = {
   ticketCost: TBreakupItem;
   amountYouGet: TBreakupItem;
@@ -126,26 +141,31 @@ export type TBreakup = {
   totalAddonCost?: TBreakupItem;
 };
 
+/** Aggregate booking counts for an event dashboard. */
 export type TBookingSummary = {
   total_bookings: number;
   ticket_bookings: TBookingStats[];
 };
 
+/** Booking count for a single ticket type. */
 export type TBookingStats = {
   ticket_type: string;
   count: number;
 };
 
+/** Aggregate payment totals for an event dashboard. */
 export type TPaymentSummary = {
   total_amount: number;
   ticket_payments: TPaymentStats[];
 };
 
+/** Daily ticket sale count for revenue charts. */
 export type TPaymentSummaryDayWise = {
   date_of_sale: string;
   count_today_ticket_Sale: number;
 };
 
+/** Payment totals grouped by ticket type and discount code. */
 export type TPaymentStats = {
   applied_discount__code: string;
   count: number;

@@ -4,6 +4,9 @@ import type { TTickerForm } from "./event-form.js";
 import type { TDiscountCoupon } from "./discount.js";
 import type { TSeatConfiguration } from "./seating.js";
 
+/**
+ * Optional purchasable add-on attached to an event ticket.
+ */
 export type TTicketAddon = {
   id: number;
   name?: string;
@@ -14,15 +17,22 @@ export type TTicketAddon = {
   maximum_quantity: number;
 };
 
+/**
+ * Minimal ticket fields shared between request and response shapes.
+ */
 export type TBasicTicket = {
   id?: number;
   type: string;
   whatsapp_group_link?: string;
   cover?: TImageMedia;
   description?: string;
+  /** Parent event ID when embedded in a list. */
   event?: number;
 };
 
+/**
+ * Ticket payload for creating or updating a ticket via the organiser API.
+ */
 export type TTicketRequest = TBasicTicket & {
   amount: number;
   description?: string;
@@ -40,6 +50,9 @@ export type TTicketRequest = TBasicTicket & {
   sequence: number;
 };
 
+/**
+ * Ticket entity returned by the public and organiser APIs.
+ */
 export type TTicketResponse = TBasicTicket & {
   amount: number;
   gst_on_ticket: number;

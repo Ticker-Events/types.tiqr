@@ -6,6 +6,9 @@ import type { TTickerForm } from "./event-form.js";
 import type { TTicketResponse } from "./ticket.js";
 import type { TSectionConfiguration } from "./seating.js";
 
+/**
+ * Core event fields produced by AI-assisted event creation or manual entry.
+ */
 export type TTickerAIEventData = {
   name: string;
   logo?: TImageMedia;
@@ -23,6 +26,9 @@ export type TTickerAIEventData = {
   venue?: string;
 };
 
+/**
+ * Collaborators grouped by role on an event.
+ */
 export type TEventCollaboratorsMap = {
   partner?: TUser[];
   cohost?: TUser[];
@@ -30,6 +36,9 @@ export type TEventCollaboratorsMap = {
   artist?: TUser[];
 };
 
+/**
+ * Platform and gateway fee configuration applied to ticket sales.
+ */
 export type TPlatformFee = {
   tiqr_fee_percentage: number;
   gateway_fee_percentage: number;
@@ -37,6 +46,9 @@ export type TPlatformFee = {
   gst: number;
 };
 
+/**
+ * Full event entity returned by the TiQr Events API.
+ */
 export type TTickerEvent = TTickerAIEventData & {
   id?: number;
   tickets?: TTicketResponse[];
@@ -63,28 +75,34 @@ export type TTickerEvent = TTickerAIEventData & {
   qr_code_id?: string | null;
 };
 
+/** Event count grouped by genre for discovery pages. */
 export type TGenreSummary = {
   genre: string;
   count: number;
 };
 
+/** Tag option used in creatable tag select inputs. */
 export type TTag = {
   label: string;
   value: string;
+  /** Set when the tag was created inline in a creatable select. */
   __isNew__?: boolean;
 };
 
+/** Formatted date strings for event card and hero displays. */
 export type TDateDisplay = {
   singleDayEvent?: boolean;
   subTitle?: string;
   title?: string;
 };
 
+/** Single option in an event filter dropdown. */
 export type TFilterOption = {
   label: string;
   value: string;
 };
 
+/** Filter group with a label, key, and selectable options. */
 export type TFilter = {
   label: string;
   key: string;
@@ -92,6 +110,7 @@ export type TFilter = {
   options: TFilterOption[];
 };
 
+/** Key-value map of currently applied event list filters. */
 export type TAppliedFilters = {
   [key: string]: string | undefined;
 };

@@ -1,5 +1,8 @@
 import type { TUser } from "./user.js";
 
+/**
+ * Shortened URL record with visit analytics.
+ */
 export type TShortUrl = {
   id: string;
   title: string;
@@ -11,6 +14,7 @@ export type TShortUrl = {
   visits: TShortUrlVisit[];
 };
 
+/** Individual visit event recorded for a short URL. */
 export type TShortUrlVisit = {
   ip_address: string;
   user_agent: string;
@@ -21,18 +25,20 @@ export type TShortUrlVisit = {
   created_at: string;
 };
 
+/** Daily visit count aggregate for short URL analytics. */
 export type TShortUrlVisitPerDay = {
   date: string;
   count: number;
 };
 
+/** Visit count grouped by country for short URL analytics. */
 export type TShortUrlVisitPerCountry = {
   country: string;
   count: number;
 };
 
-/** @deprecated Use TShortUrl */
+/** @deprecated Use {@link TShortUrl} */
 export type ShortUrl = TShortUrl;
 
-/** @deprecated Use TShortUrlVisit */
+/** @deprecated Use {@link TShortUrlVisit} */
 export type ShortUrlVisit = TShortUrlVisit;

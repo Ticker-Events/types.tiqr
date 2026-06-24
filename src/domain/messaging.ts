@@ -1,9 +1,15 @@
+/**
+ * File attachment on a WhatsApp chat message.
+ */
 export type TChatFile = {
   id: number;
   file_upload: string;
   type: string;
 };
 
+/**
+ * WhatsApp contact with last-message preview for the inbox list.
+ */
 export type TChatUser = {
   id: number;
   last_message_info: {
@@ -34,6 +40,9 @@ export type TChatUser = {
   };
 };
 
+/**
+ * Individual WhatsApp message in a conversation thread.
+ */
 export type TMessage = {
   id: string;
   contactId: number;

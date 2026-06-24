@@ -1,9 +1,13 @@
 import type { TDailyAvailability, TDayOfWeek, TTimeSlot } from "../domain/appointment.js";
 
+/** Availability intervals for a single day in the legacy form format. */
 export type TDayAvailability = {
   time_intervals: TTimeSlot[];
 };
 
+/**
+ * Availability settings as returned by the legacy store settings API.
+ */
 export type TOriginalAvailability = {
   slot_duration: number;
   slot_unit: string;
@@ -18,6 +22,9 @@ export type TOriginalAvailability = {
   };
 };
 
+/**
+ * Normalised availability payload sent to the schedule API.
+ */
 export type TConvertedAvailability = {
   store: number;
   name: string;
@@ -29,6 +36,7 @@ export type TConvertedAvailability = {
   daily_availabilities: TDailyAvailability[];
 };
 
+/** Maps weekday abbreviations to numeric day indices. */
 export type TAvailabilityDayMapping = {
   [key in TDayOfWeek]?: number;
 };

@@ -1,3 +1,11 @@
+/**
+ * @packageDocumentation
+ * Shared TypeScript types for TiQr Store and TiQr Events.
+ *
+ * Import from `@types/tiqr` for everything, or use subpath exports
+ * (`@types/tiqr/domain`, `@types/tiqr/ui`, etc.) to limit peer dependencies.
+ */
+
 export type * from "./common/hash-map.js";
 export type * from "./common/locale.js";
 export type * from "./common/media.js";
