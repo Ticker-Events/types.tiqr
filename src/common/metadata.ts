@@ -4,6 +4,7 @@ export type TSocialMedia = {
   twitter?: string;
   linkedin?: string;
   youtube?: string;
+  github?: string;
   [key: string]: string | undefined;
 };
 

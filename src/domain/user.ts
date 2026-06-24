@@ -38,5 +38,22 @@ export type TUser = {
   display_name: string;
   projects: TWAProject[];
   default_store?: TStore;
-  addresses: TListResponse<TAddress>;
+  addresses?: TListResponse<TAddress>;
+  memberships?: TUser[];
+  is_membership_club?: boolean;
+  referral_code?: string;
+};
+
+export type TMembershipClass = {
+  id: number;
+  name: string;
+};
+
+export type TConnectionRequest = {
+  id: number;
+  from_user: number;
+  to_user: number;
+  status: "pending" | "accepted" | "rejected";
+  email: string;
+  phone_number: string;
 };

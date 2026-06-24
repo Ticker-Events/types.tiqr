@@ -1,5 +1,6 @@
 export type * from "./alert.js";
 export type * from "./appointments.js";
+export type * from "./events.js";
 export type * from "./forms.js";
 export type * from "./orders.js";
 export type * from "./products.js";

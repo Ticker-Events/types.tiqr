@@ -4,3 +4,6 @@ export type TListResponse<T> = {
   previous?: number;
   results: T[];
 };
+
+/** @deprecated Use TListResponse */
+export type TPaginatedResponse<T> = TListResponse<T>;

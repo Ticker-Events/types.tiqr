@@ -1,7 +1,7 @@
 import type { IconType } from "react-icons";
 
 export type TTileSelectOption = {
-  id: string;
+  id?: string;
   label: string;
   description?: string;
   value: unknown;

@@ -1,1 +1,1 @@
-export type THashMap = { [key: string]: string };
+export type THashMap = Record<string, unknown>;
