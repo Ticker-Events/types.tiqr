@@ -19,14 +19,18 @@
     },
     "./tracking": {
       "types": "./dist/tracking/index.d.ts"
+    },
+    "./global": {
+      "types": "./dist/global.d.ts"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "node scripts/generate-global.mjs && tsc",
     "typecheck": "tsc --noEmit",
+    "generate:global": "node scripts/generate-global.mjs",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build"
   },

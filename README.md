@@ -107,6 +107,56 @@ import type { TTrackingAdapter, TTrackingConfig } from "@types/tiqr/tracking";
 | `@types/tiqr/ui` | Component and hook prop types |
 | `@types/tiqr/pages/events` | Events app page data types |
 | `@types/tiqr/tracking` | Analytics adapter types |
+| `@types/tiqr/global` | Ambient globals (no per-file imports) |
+
+## Global types (no imports)
+
+**Yes — you can use types without importing them in every file**, the same way `ticker_events_fe` worked with ambient `type.d.ts` files. `@types/tiqr` ships an optional global entry point for this.
+
+### Recommended: explicit imports
+
+```typescript
+import type { TUser, TTickerEvent } from "@types/tiqr";
+```
+
+Explicit imports make dependencies visible, avoid naming collisions, and are easier to refactor. Prefer this for new code.
+
+### Optional: ambient globals (one-time setup)
+
+Add a single reference file in your app (e.g. `types/tiqr-globals.d.ts`):
+
+```typescript
+import "@types/tiqr/global";
+```
+
+Ensure your `tsconfig.json` includes it (the `**/*.ts` pattern already matches `.d.ts` files):
+
+```json
+{
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+}
+```
+
+After that, use types anywhere without imports:
+
+```typescript
+// No import needed
+function getUser(): TUser { ... }
+const event: TTickerEvent = { ... };
+```
+
+All 250+ types and constants (`ORDER_SORT_OPTIONS`, `AlertType`, `ToastType`) are registered on the global scope.
+
+### Trade-offs
+
+| | Explicit imports | Global types |
+|--|------------------|--------------|
+| Setup | Per file | Once in `tiqr-globals.d.ts` |
+| Clarity | High — sources are obvious | Low — types appear from nowhere |
+| Collisions | Unlikely | Possible with other global types |
+| Refactoring | IDE auto-import works | Manual |
+
+The global file is auto-generated during `npm run build` in this repo (`scripts/generate-global.mjs`).
 
 ## Peer dependencies
 
