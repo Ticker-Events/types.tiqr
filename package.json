@@ -1,0 +1,53 @@
+{
+  "name": "@types/tiqr",
+  "version": "1.0.0",
+  "description": "TypeScript type definitions for TiQr Store",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts"
+    },
+    "./domain": {
+      "types": "./dist/domain/index.d.ts"
+    },
+    "./ui": {
+      "types": "./dist/ui/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "firebase": ">=11"
+  },
+  "peerDependenciesMeta": {
+    "firebase": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/google.maps": "^3.58.1",
+    "@types/react": "^19.0.10",
+    "firebase": "^11.4.0",
+    "react": "^19.0.0",
+    "react-icons": "^5.5.0",
+    "typescript": "^5.8.2"
+  },
+  "keywords": [
+    "tiqr",
+    "types",
+    "typescript"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tiqr-labs/types.tiqr"
+  }
+}
