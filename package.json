@@ -28,7 +28,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "node scripts/generate-global.mjs && tsc",
+    "build": "node scripts/generate-global.mjs && tsc && cp src/global.d.ts dist/global.d.ts",
     "typecheck": "tsc --noEmit",
     "generate:global": "node scripts/generate-global.mjs",
     "prepare": "npm run build",

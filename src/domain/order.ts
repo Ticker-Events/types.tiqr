@@ -6,6 +6,11 @@ import type { TUser } from "./user.js";
 import type { TPayment } from "./payment.js";
 import type { TTimeSlotResponse } from "./appointment.js";
 
+/** How a product order is fulfilled. */
+export type TDeliveryMode =
+  | "PICKUP_FROM_STORE"
+  | "DELIVERY_TO_LOCATION";
+
 /** Single status-change entry in an order audit log. */
 export type TOrderLog = {
   new_status: string;
@@ -79,6 +84,8 @@ export type TOrder = TOrderDetailsDrawer & {
   total_duration: number;
   start_time: string;
   end_time: string;
+  /** Fulfillment method selected at checkout. */
+  delivery_mode?: TDeliveryMode;
 };
 
 /** Order with guaranteed `total_duration` for detail views. */
