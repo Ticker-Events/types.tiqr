@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 /** Supported design system identifiers for @tiqr/ui. */
-export type TDesignSystemId = "tiqr-default";
+export type TDesignSystemId = "tiqr-default" | "luxury";
 
 /** Injectable route builders so storefront components stay app-agnostic. */
 export type TRouteConfig = {
