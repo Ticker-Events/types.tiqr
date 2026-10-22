@@ -5,6 +5,7 @@ import type { TPlace } from "./place.js";
 import type { TTickerForm } from "./event-form.js";
 import type { TTicketResponse } from "./ticket.js";
 import type { TSectionConfiguration } from "./seating.js";
+import type { TSpeakerResponse } from "./speaker.js";
 
 /**
  * Core event fields produced by AI-assisted event creation or manual entry.
@@ -47,6 +48,15 @@ export type TPlatformFee = {
 };
 
 /**
+ * Gallery media item returned on participant event detail.
+ */
+export type TEventGalleryItem = {
+  id: number;
+  gallery?: string;
+  path?: string;
+};
+
+/**
  * Full event entity returned by the TiQr Events API.
  */
 export type TTickerEvent = TTickerAIEventData & {
@@ -62,9 +72,12 @@ export type TTickerEvent = TTickerAIEventData & {
   gallery2?: TImgAndPdf;
   gallery3?: TImgAndPdf;
   gallery4?: TImgAndPdf;
-  gallery?: TImageMedia;
+  /** Single cover-style gallery image or participant detail gallery list. */
+  gallery?: TImageMedia | TEventGalleryItem[];
+  speakers?: TSpeakerResponse[];
   is_express_checkout_enabled?: boolean;
   has_seat_configuration?: boolean;
+  has_coupon_based_discount?: boolean;
   section_configuration?: TSectionConfiguration;
   minimum_ticket_price: number;
   starting_price: number;
@@ -73,6 +86,67 @@ export type TTickerEvent = TTickerAIEventData & {
   customisation?: THashMap;
   timezone?: string;
   qr_code_id?: string | null;
+  priority?: number;
+  is_recurring?: boolean;
+  recurring_type?: string;
+  recurring_interval?: number;
+  closed_days?: string[];
+  closed_dates?: string[];
+  external_booking_url?: string;
+  allow_app_booking?: boolean;
+};
+
+/**
+ * Compact event card returned by participant list and highlighted endpoints.
+ */
+export type TEventListItem = {
+  id: number;
+  name: string;
+  logo?: TImageMedia;
+  cover?: TImageMedia;
+  start_date: string;
+  end_date: string;
+  short_description: string;
+  genre: string;
+  is_online: boolean;
+  is_public?: boolean;
+  is_published: boolean;
+  address?: TPlace | Record<string, unknown>;
+  priority?: number;
+  is_recurring?: boolean;
+  recurring_type?: string;
+  recurring_interval?: number;
+  closed_days?: string[];
+  closed_dates?: string[];
+  external_booking_url?: string;
+  customisation?: THashMap;
+  timezone?: string;
+  allow_app_booking?: boolean;
+  qr_code_id?: string | null;
+  minimum_ticket_price?: number;
+  maximum_ticket_price?: number;
+  starting_price?: number;
+  ticket_prices?: number[];
+  organiser?: TUser;
+};
+
+/**
+ * Query parameters for `GET participant/event/`.
+ */
+export type TEventListParams = {
+  genre?: string;
+  created_by?: string | number;
+  hosted_by?: string | number;
+  start_date?: string;
+  end_date?: string;
+  is_online?: boolean;
+  sort_by?: string;
+  search?: string;
+  latitude?: number;
+  longitude?: number;
+  distance?: number;
+  limit?: number;
+  offset?: number;
 };
 
 /** Event count grouped by genre for discovery pages. */

@@ -11,8 +11,10 @@ export type TAddonDiscount = {
 
 /**
  * Discount coupon available at checkout for a ticket.
+ * `id` is returned by participant coupon validation and `available_discounts`.
  */
 export type TDiscountCoupon = {
+  id?: number;
   code: string;
   type: string;
   minimum_usage: number;
