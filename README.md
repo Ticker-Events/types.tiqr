@@ -252,6 +252,9 @@ The global file is auto-generated during `npm run build` in this repo (`scripts/
 |------|-------------|
 | `TTickerAIEventData` | Core event fields (AI or manual) |
 | `TTickerEvent` | Full event API entity |
+| `TEventListItem` | Compact event card (participant list / highlighted) |
+| `TEventListParams` | Query params for participant event list |
+| `TEventGalleryItem` | Gallery media on participant event detail |
 | `TEventCollaboratorsMap` | Collaborators grouped by role |
 | `TPlatformFee` | Fee percentages and fixed charges |
 | `TGenreSummary` | Event count per genre |
@@ -279,6 +282,9 @@ The global file is auto-generated during `npm run build` in this repo (`scripts/
 | `TAttendeeProfile` / `TAttendeeProfileWrite` | Networking profile |
 | `TBookingType` | `"offline"` \| `"online"` \| `"complimentary"` |
 | `TBookingData` / `TUserBooking` | Booking records |
+| `TBookingCreatePayload` / `TBulkBookingCreatePayload` | Participant booking create payloads |
+| `TBookingCreateResponse` | `{ booking, payment }` from create / bulk / retry |
+| `TBookingResponse` | Legacy narrow create echo (prefer `TBookingCreateResponse`) |
 | `TBookingAddon` / `TAddonBookingSnapshot` | Booking add-on lines |
 | `TPaymentBreakdown` / `TBookingPaymentSnapshot` | Booking payment |
 | `TBreakup` / `TBreakupItem` | Price breakup display |

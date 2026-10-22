@@ -1,4 +1,5 @@
 import type { TPdfFile } from "../common/media.js";
+import type { TPaymentMetaData } from "./payment.js";
 import type { TBasicTicket, TTicketAddon, TTicketResponse } from "./ticket.js";
 import type { TTickerEvent } from "./event.js";
 import type { TTickerForm } from "./event-form.js";
@@ -20,6 +21,41 @@ export type TBookingFormData = {
 };
 
 /**
+ * Payload for `POST participant/booking/` (single ticket checkout).
+ */
+export type TBookingCreatePayload = {
+  ticket: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone_number: string;
+  quantity: number;
+  meta_data?: unknown;
+  applied_discount?: number | null;
+  booking_addons?: TBookingAddon[];
+  seats?: string[];
+  referral_code?: string | null;
+  callback_url?: string;
+  custom_amount?: number;
+};
+
+/**
+ * Payload for `POST participant/booking/bulk/`.
+ */
+export type TBulkBookingCreatePayload = {
+  bookings: TBookingCreatePayload[];
+  callback_url?: string;
+};
+
+/**
+ * Response from booking create, bulk create, and retry payment.
+ */
+export type TBookingCreateResponse = {
+  booking: TUserBooking;
+  payment: TPaymentMetaData | Record<string, unknown> | null;
+};
+
+/**
  * Core booking fields used in check-in flows and booking creation.
  */
 export type TBookingData = {
@@ -31,12 +67,15 @@ export type TBookingData = {
   phone_number: string;
   quantity: number;
   meta_data: unknown;
-  applied_discount: number;
+  applied_discount?: number | null;
   booking_addons: TBookingAddon[];
   seats?: string[];
   checkedInQty?: number;
-  booking_type: TBookingType;
-  booking_id: string;
+  booking_type?: TBookingType;
+  booking_id?: string;
+  referral_code?: string | null;
+  callback_url?: string;
+  custom_amount?: number;
 };
 
 /** Itemised price breakdown for a ticket booking payment. */
